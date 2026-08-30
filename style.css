@@ -238,8 +238,8 @@ section {
 }
 
 .poll-btn:hover:not(:disabled) {
-    background-color: #ff4a3f;
-    transform: translateY(-3px);
+    color: #ff4a3f;
+    background-color: #black;
 }
 
 .poll-btn.disabled, .poll-btn:disabled {
