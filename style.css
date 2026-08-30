@@ -64,7 +64,7 @@ nav {
     color: var(--shum-red);
 }
 
-/* --- ХИДЕР С ВИДЕО --- */
+/* --- ВИДЕО --- */
 #hero {
     position: relative;
     height: 100vh;
@@ -87,14 +87,13 @@ nav {
     object-fit: cover;
 }
 
-/* Полупрозрачный черный оверлей для видео */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 0.5 - прозрачность */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
 
@@ -105,7 +104,7 @@ nav {
     line-height: 1;
 }
 
-/* --- ОБЩИЕ СЕКЦИИ --- */
+/* --- СЕКЦИИ --- */
 section {
     padding: 120px 50px 80px;
     min-height: 80vh;
@@ -152,7 +151,7 @@ section {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
-/* --- РЕЛИЗЫ / ВИДЕО --- */
+/* --- РЕЛИЗЫ--- */
 .releases-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -177,7 +176,7 @@ section {
     border-color: var(--shum-red);
 }
 
-/* --- СЕКЦИЯ POLL --- */
+/* --- POLLL --- */
 #poll {
     background-color: #050505;
 }
@@ -185,7 +184,7 @@ section {
 .poll-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Чтобы карточки ровнялись по верхнему краю */
+    align-items: flex-start; 
     gap: 60px;
     max-width: 1100px;
     margin: 0 auto;
@@ -220,9 +219,9 @@ section {
 
 .poll-img {
     width: 100%;
-    height: auto; /* Картинка полностью видна без обрезки */
+    height: auto; 
     display: block;
-    object-fit: contain; /* Картинка масштабируется внутри без искажений */
+    object-fit: contain;
 }
 
 .poll-btn {
@@ -305,7 +304,7 @@ footer {
     text-transform: uppercase;
 }
 
-/* --- ЗАКРЕПЛЕННЫЕ СОЦСЕТИ --- */
+/* --- SOCIALS --- */
 .fixed-socials {
     position: fixed;
     bottom: 30px;
@@ -334,7 +333,7 @@ footer {
     transform: translateY(-5px) scale(1.1);
 }
 
-/* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
+/* --- МОБИЛКА --- */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -363,16 +362,15 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    /* Адаптация секции POLL - Рядом друг с другом и полностью видно */
     .poll-container {
-        flex-direction: row; /* Заставляем их встать в ряд */
-        flex-wrap: nowrap; /* Запрещаем перенос на вторую строку */
-        gap: 15px; /* Уменьшаем отступ между карточками */
+        flex-direction: row;
+        flex-wrap: nowrap; 
+        gap: 15px; 
     }
     
     .poll-option {
-        flex: 1 1 50%; /* Каждая карточка занимает ровно половину ширины */
-        min-width: 0; /* Разрешаем сжиматься на мелких экранах */
+        flex: 1 1 50%;
+        min-width: 0;
         gap: 15px;
     }
 
@@ -381,8 +379,8 @@ footer {
     }
     
     .poll-btn {
-        font-size: 1.2rem; /* Уменьшаем шрифт кнопок, чтобы влезли */
-        padding: 10px 5px; /* Уменьшаем отступы в кнопке */
+        font-size: 1.2rem;
+        padding: 10px 5px; 
         letter-spacing: 1px;
     }
 
