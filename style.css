@@ -239,7 +239,7 @@ section {
 
 .poll-btn:hover:not(:disabled) {
     color: #ff4a3f;
-    background-color: #black;
+    background-color: black;
 }
 
 .poll-btn.disabled, .poll-btn:disabled {
