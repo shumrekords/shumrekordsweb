@@ -57,13 +57,13 @@
                 <div class="poll-image-box">
                     <img src="IMG_3032.PNG" alt="Option 3032" class="poll-img">
                 </div>
-                <button class="poll-btn" onclick="vote('001')">01</button>
+                <button class="poll-btn" onclick="vote('01')">01</button>
             </div>
             <div class="poll-option">
                 <div class="poll-image-box">
                     <img src="IMG_3104.JPEG" alt="Option 3104" class="poll-img">
                 </div>
-                <button class="poll-btn" onclick="vote('002')">02</button>
+                <button class="poll-btn" onclick="vote('02')">02</button>
             </div>
         </div>
         <div id="poll-message" class="poll-message"></div>
@@ -103,8 +103,8 @@
         });
 
         //  POLL
-        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/e/YOUR_FORM_ID/formResponse';
-        const ENTRY_ID = 'entry.123456789'; // Заменить ентри айди
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSclvMWXWY0_tNWfIBND6zfnFmGFjS3LTgYgL4xPStPU3BYzgQ/formResponse';
+        const ENTRY_ID = 'entry.1291494100'; // Заменить ентри айди
 
         function vote(option) {
             if (localStorage.getItem('shum_voted')) {
