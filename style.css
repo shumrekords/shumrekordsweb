@@ -1,0 +1,403 @@
+:root {
+    --shum-red: #EC372C;
+    --shum-black: #080808;
+    --text-light: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--shum-black);
+    color: var(--text-light);
+    font-family: 'Quantico', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Impact', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+/* --- НАВИГАЦИЯ --- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(8, 8, 8, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(236, 55, 44, 0.1);
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--shum-red);
+    text-decoration: none;
+    letter-spacing: 4px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--shum-red);
+}
+
+/* --- ХИДЕР С ВИДЕО --- */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+/* Полупрозрачный черный оверлей для видео */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 0.5 - прозрачность */
+    z-index: -1;
+}
+
+.hero-content h1 {
+    font-size: 12vw;
+    color: var(--shum-red);
+    margin: 0;
+    line-height: 1;
+}
+
+/* --- ОБЩИЕ СЕКЦИИ --- */
+section {
+    padding: 120px 50px 80px;
+    min-height: 80vh;
+}
+
+.section-title {
+    font-size: 4rem;
+    color: var(--shum-red);
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+/* --- АРТИСТЫ --- */
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.artist-card {
+    background-color: #121212;
+    height: 350px;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--shum-red);
+}
+
+.artist-card h3 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* --- РЕЛИЗЫ / ВИДЕО --- */
+.releases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.release-item {
+    background-color: #121212;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #222;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.release-item:hover {
+    border-color: var(--shum-red);
+}
+
+/* --- СЕКЦИЯ POLL --- */
+#poll {
+    background-color: #050505;
+}
+
+.poll-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Чтобы карточки ровнялись по верхнему краю */
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.poll-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+}
+
+.poll-image-box {
+    width: 100%;
+    height: auto; /* Высота подстраивается под картинку */
+    background-color: #121212;
+    border: 2px solid #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.poll-option:hover .poll-image-box {
+    border-color: var(--shum-red);
+    transform: scale(1.02);
+}
+
+.poll-img {
+    width: 100%;
+    height: auto; /* Картинка полностью видна без обрезки */
+    display: block;
+    object-fit: contain; /* Картинка масштабируется внутри без искажений */
+}
+
+.poll-btn {
+    background-color: var(--shum-red);
+    color: #fff;
+    font-family: 'Impact', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    padding: 12px 60px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+}
+
+.poll-btn:hover:not(:disabled) {
+    background-color: #ff4a3f;
+    transform: translateY(-3px);
+}
+
+.poll-btn.disabled, .poll-btn:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.poll-message {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Impact', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    min-height: 2.2rem;
+}
+
+.poll-message.success {
+    color: var(--shum-red);
+}
+
+.poll-message.warning {
+    color: #aaa;
+}
+
+/* --- КОНТАКТЫ --- */
+#contacts {
+    text-align: center;
+    background-color: #080808;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #aaa;
+}
+
+.contact-email {
+    color: var(--shum-red);
+    text-decoration: none;
+    font-size: 3rem;
+    font-family: 'Impact', sans-serif;
+    letter-spacing: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.contact-email:hover {
+    opacity: 0.8;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #000;
+    font-size: 0.9rem;
+    color: #444;
+    text-transform: uppercase;
+}
+
+/* --- ЗАКРЕПЛЕННЫЕ СОЦСЕТИ --- */
+.fixed-socials {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    z-index: 1000;
+    background: rgba(8, 8, 8, 0.7);
+    padding: 10px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(236, 55, 44, 0.2);
+}
+
+.fixed-socials a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.fixed-socials a:hover {
+    color: var(--shum-red);
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 10px;
+        width: 100vw;
+    }
+    
+    .nav-links {
+        gap: 12px;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 25vw;
+    }
+    
+    section {
+        padding: 120px 15px 40px;
+    }
+
+    .artists-grid, .releases-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Адаптация секции POLL - Рядом друг с другом и полностью видно */
+    .poll-container {
+        flex-direction: row; /* Заставляем их встать в ряд */
+        flex-wrap: nowrap; /* Запрещаем перенос на вторую строку */
+        gap: 15px; /* Уменьшаем отступ между карточками */
+    }
+    
+    .poll-option {
+        flex: 1 1 50%; /* Каждая карточка занимает ровно половину ширины */
+        min-width: 0; /* Разрешаем сжиматься на мелких экранах */
+        gap: 15px;
+    }
+
+    .poll-image-box {
+        height: auto; 
+    }
+    
+    .poll-btn {
+        font-size: 1.2rem; /* Уменьшаем шрифт кнопок, чтобы влезли */
+        padding: 10px 5px; /* Уменьшаем отступы в кнопке */
+        letter-spacing: 1px;
+    }
+
+    .contact-email {
+        font-size: 1.8rem;
+        word-break: break-all;
+    }
+
+    .fixed-socials {
+        bottom: 20px;
+        padding: 8px 15px;
+        gap: 20px;
+    }
+    
+    .fixed-socials a {
+        font-size: 1.5rem;
+    }
+}

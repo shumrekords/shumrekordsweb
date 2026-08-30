@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHUMREKORDS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="#hero" class="logo">SHUM</a>
+        <div class="nav-links">
+            <a href="#artists">PODCASTS</a>
+            <a href="#releases">RELEASES</a>
+            <a href="#poll">POLL</a>
+            <a href="#contacts">CONTACT</a>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+        </video>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>SHUM</h1>
+        </div>
+    </header>
+
+    <section id="artists">
+        <h2 class="section-title">PODCASTS</h2>
+        <div class="artists-grid">
+            <div class="artist-card"><h3>PODCASTS ONE</h3></div>
+            <div class="artist-card"><h3>PODCASTS TWO</h3></div>
+            <div class="artist-card"><h3>PODCASTS THREE</h3></div>
+        </div>
+    </section>
+
+    <section id="releases">
+        <h2 class="section-title">RELEASES</h2>
+        <div class="releases-grid">
+            <div class="release-item">RELEASE 1</div>
+            <div class="release-item">RELEASE 2</div>
+            <div class="release-item">RELEASE 3</div>
+            <div class="release-item">RELEASE 2</div>
+        </div>
+    </section>
+
+    <section id="poll">
+        <h2 class="section-title">MAKE A CHOICE</h2>
+        <div class="poll-container">
+            <div class="poll-option">
+                <div class="poll-image-box">
+                    <img src="IMG_3032.PNG" alt="Option 3032" class="poll-img">
+                </div>
+                <button class="poll-btn" onclick="vote('001')">01</button>
+            </div>
+            <div class="poll-option">
+                <div class="poll-image-box">
+                    <img src="IMG_3104.JPEG" alt="Option 3104" class="poll-img">
+                </div>
+                <button class="poll-btn" onclick="vote('002')">02</button>
+            </div>
+        </div>
+        <div id="poll-message" class="poll-message"></div>
+    </section>
+
+    <section id="contacts">
+        <h2 class="section-title">CONTACT US</h2>
+        <a href="mailto:CONTACT@shum.com" class="contact-email">CK@SHUMREKORDS.COM</a>
+    </section>
+
+    <footer>
+        &copy; 2026 SHUM RECORDS.
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>  
+    </footer>
+
+    <div class="fixed-socials">
+        <a href="https://soundcloud.com" target="_blank" aria-label="SoundCloud">
+            <i class="fa-brands fa-soundcloud"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        //  POLL
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/e/YOUR_FORM_ID/formResponse';
+        const ENTRY_ID = 'entry.123456789'; // Заменить ентри айди
+
+        function vote(option) {
+            if (localStorage.getItem('shum_voted')) {
+                showPollMessage('YOUR CHOICE HAS BEEN REKORDED', 'warning');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append(ENTRY_ID, option);
+
+            fetch(GOOGLE_FORM_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                completeVote(option);
+            }).catch(() => {
+                completeVote(option);
+            });
+        }
+
+        function completeVote(option) {
+            localStorage.setItem('shum_voted', option);
+            document.cookie = "shum_voted=" + option + "; max-age=" + (365*24*60*60) + "; path=/";
+            
+            disableButtons();
+            showPollMessage('YOUR CHOICE HAS BEEN REKORDED (' + option + ')', 'success');
+        }
+
+        function disableButtons() {
+            document.querySelectorAll('.poll-btn').forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('disabled');
+            });
+        }
+
+        function showPollMessage(msg, type) {
+            const msgEl = document.getElementById('poll-message');
+            msgEl.innerText = msg;
+            msgEl.className = 'poll-message ' + type;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hasVotedLocal = localStorage.getItem('shum_voted');
+            const hasVotedCookie = document.cookie.split('; ').find(row => row.startsWith('shum_voted='));
+            
+            if (hasVotedLocal || hasVotedCookie) {
+                const choice = hasVotedLocal || (hasVotedCookie ? hasVotedCookie.split('=')[1] : '');
+                disableButtons();
+                showPollMessage('YOUR CHOICE HAS BEEN REKORDED (CHOOSE: ' + choice + ')', 'warning');
+            }
+        });
+    </script>
+</body>
+</html>
