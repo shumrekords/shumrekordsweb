@@ -335,6 +335,9 @@ footer {
 
 /* --- МОБИЛКА --- */
 @media (max-width: 768px) {
+    #hero{
+    display:none;
+    }
     nav {
         flex-direction: column;
         gap: 10px;
